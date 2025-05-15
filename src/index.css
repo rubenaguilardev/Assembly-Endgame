@@ -1,1 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+  font-family: 'Haken Grotesk', sans-serif;
+  color: #F9F4DA;
+}
+
+main {
+  width: 594px;
+  background-color: #282726;
+  margin: 20px auto 0 auto;
+}
+
+header {
+  padding: 73px 143px 20px;
+  text-align: center;
+}
+
+h1 {
+  color: #F9F4DA;
+  margin-bottom: 5px;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+header p {
+  color: #8E8E8E;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.status {
+  margin: 0 121px 36px 121px;
+  padding: 11px 110px;
+  background-color: #10A95B;
+  text-align: center;
+  border-radius: 4px;
+}
+
+h2 {
+  margin: 0;
+  padding-bottom: 4px;
+
+}
+
+.status h2,
+.status span {
+  font-weight: 500;
+}
