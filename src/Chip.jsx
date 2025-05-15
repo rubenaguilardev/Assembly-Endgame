@@ -1,5 +1,5 @@
 export default function Chip(props) {
-    
+
     return (
         <span 
             key={props.id}
@@ -8,7 +8,7 @@ export default function Chip(props) {
                 backgroundColor: props.backgroundColor,
                 color: props.color
             }}>
-                {props.name}
+            {props.name}
         </span>
     )
 }

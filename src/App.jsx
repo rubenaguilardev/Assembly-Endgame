@@ -1,7 +1,31 @@
 import {languages} from './languages.js'
 import Chip from './Chip'
+import {useState} from 'react'
 
 export default function App() {
+
+  const [currentWord, setCurrentWord] = useState('react')
+
+  const [guessed, setGuessed] = useState([])
+
+  function addGuessedLetter(letter) {
+    setGuessed(prevGuessed => ([...prevGuessed, letter]))
+  }
+
+  console.log(guessed)
+
+  const alphabet = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+  ]
+
+  const keyboardKeys = alphabet.map(letter => (
+    <button key={letter} className='key' onClick={() => addGuessedLetter(letter)}>{letter.toUpperCase()}</button>
+  ))
+
+  const letters = currentWord.split('').map((letter, index) => (
+    <span key={index} className='letter'>{letter.toUpperCase()}</span>)
+  )
 
   const languageChips = languages.map(chip => 
     (<Chip 
@@ -23,6 +47,12 @@ export default function App() {
       </section>
       <section className='chips'>
         {languageChips}
+      </section>
+      <section className='word-section'>
+        {letters}
+      </section>
+      <section className='keyboard'>
+        {keyboardKeys}
       </section>
      
     </main>
