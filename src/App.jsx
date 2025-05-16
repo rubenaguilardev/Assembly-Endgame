@@ -35,25 +35,25 @@ export default function App() {
     )
   })
 
-  const letters = currentWord.split('').map((letter, index) => (
+  const letters = currentWord.split('').map((letter, index) => 
     <span 
       key={index} 
       className='letter'>
         {guessed.includes(letter) ? letter.toUpperCase() : ''}
-    </span>)
+    </span>
   )
+  
 
-  const languageChips = languages.map(chip => 
+  const languageChips = languages.map((chip, index) => 
     <span 
       key={chip.name}
-      className='chip' 
+      className={index < wrongWordCount ? 'chip lost' : 'chip'}
       style={{
           backgroundColor: chip.backgroundColor,
           color: chip.color
       }}>
       {chip.name}
-    </span>
-  )
+    </span>)
 
   return (
     <main>
