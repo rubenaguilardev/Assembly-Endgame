@@ -8,23 +8,40 @@ export default function App() {
 
   const [guessed, setGuessed] = useState([])
 
-  function addGuessedLetter(letter) {
-    setGuessed(prevGuessed => ([...prevGuessed, letter]))
-  }
-
-  console.log(guessed)
+  const wrongWordCount = guessed.filter(letter => !currentWord.includes(letter)).length
 
   const alphabet = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
   ]
 
-  const keyboardKeys = alphabet.map(letter => (
-    <button key={letter} className='key' onClick={() => addGuessedLetter(letter)}>{letter.toUpperCase()}</button>
-  ))
+  function addGuessedLetter(letter) {
+
+    setGuessed(prevGuessed =>
+      prevGuessed.includes(letter) ? 
+        prevGuessed : [...prevGuessed, letter])
+  }
+
+  const keyboardKeys = alphabet.map(letter => {
+    const isGuessed = guessed.includes(letter)
+    const isCorrect = isGuessed && currentWord.includes(letter)
+    const isWrong = isGuessed & !currentWord.includes(letter)
+
+    return (
+      <button 
+        key={letter} 
+        className={isCorrect ? 'green' : isWrong ? 'red' : null}
+        onClick={() => addGuessedLetter(letter)}>{letter.toUpperCase()}
+      </button>
+  )
+})
 
   const letters = currentWord.split('').map((letter, index) => (
-    <span key={index} className='letter'>{letter.toUpperCase()}</span>)
+    <span 
+      key={index} 
+      className='letter'>
+        {guessed.includes(letter) ? letter.toUpperCase() : ''}
+    </span>)
   )
 
   const languageChips = languages.map(chip => 

@@ -79,12 +79,16 @@ h2 {
 }
 
 .letter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.125rem;
   font-weight: 700;
-  padding: 13px;
+  width: 40px;
+  height: 40px;
   background-color: #323232;
-  border-bottom: 2px solid #F9F4DA;  
-}
+  border-bottom: 2px solid #F9F4DA;
+ }
 
 .keyboard {
   display: flex;
@@ -95,7 +99,7 @@ h2 {
   padding-bottom: 145px;
 }
 
-.key {
+.keyboard button {
   font-weight: 600;
   height: 40px;
   width: 40px;
@@ -104,4 +108,12 @@ h2 {
   border-radius: 4px;
   color: #1E1E1E;
   border: 1px solid #D7D7D7;
+}
+
+button.green {
+  background-color: #10A95B;
+}
+
+button.red {
+  background-color: #EC5D49;
 }
