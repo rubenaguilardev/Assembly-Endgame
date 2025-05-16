@@ -1,5 +1,4 @@
 import {languages} from './languages.js'
-import Chip from './Chip'
 import {useState} from 'react'
 
 export default function App() {
@@ -33,8 +32,8 @@ export default function App() {
         className={isCorrect ? 'green' : isWrong ? 'red' : null}
         onClick={() => addGuessedLetter(letter)}>{letter.toUpperCase()}
       </button>
-  )
-})
+    )
+  })
 
   const letters = currentWord.split('').map((letter, index) => (
     <span 
@@ -45,12 +44,16 @@ export default function App() {
   )
 
   const languageChips = languages.map(chip => 
-    (<Chip 
+    <span 
       key={chip.name}
-      name={chip.name} 
-      backgroundColor={chip.backgroundColor}
-      color={chip.color}
-      />))
+      className='chip' 
+      style={{
+          backgroundColor: chip.backgroundColor,
+          color: chip.color
+      }}>
+      {chip.name}
+    </span>
+  )
 
   return (
     <main>
