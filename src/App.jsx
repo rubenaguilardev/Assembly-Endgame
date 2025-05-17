@@ -9,6 +9,10 @@ export default function App() {
 
   const wrongWordCount = guessed.filter(letter => !currentWord.includes(letter)).length
 
+  const isGameWon = currentWord.split('').every(letter => guessed.includes(letter))
+  const isGameLost = wrongWordCount === languages.length - 1 ? true : false
+  const isGameOver = isGameWon || isGameLost
+
   const alphabet = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
@@ -62,8 +66,12 @@ export default function App() {
         <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
       </header>
       <section className='status'>
-        <h2>You win!</h2>
-        <span>Well done! 🎉</span>
+        {isGameOver && <div 
+          className='status-container' 
+          style={{backgroundColor: isGameWon ? '#10A95B' : '#BA2A2A'}}>
+            <h2>{isGameWon ? 'You win!' : 'Game over!'}</h2>
+            <span>{isGameWon ? 'Well done! 🎉' : 'You lose! Better start learning Assembly 😭'}</span>
+        </div>}
       </section>
       <section className='chips'>
         {languageChips}
@@ -74,7 +82,9 @@ export default function App() {
       <section className='keyboard'>
         {keyboardKeys}
       </section>
-     
+      <section className='new-game-container'>
+        {isGameOver && <button className='new-game-btn'>New Game</button>}
+      </section>
     </main>
   )
 }

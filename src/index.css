@@ -13,12 +13,13 @@ body {
 
 main {
   width: 594px;
+  height: 750px;
   background-color: #282726;
   margin: 20px auto 0 auto;
 }
 
 header {
-  padding: 73px 143px 20px;
+  padding: 73px 143px 10px;
   text-align: center;
 }
 
@@ -37,9 +38,13 @@ header p {
 }
 
 .status {
-  margin: 0 121px 36px 121px;
-  padding: 11px 110px;
-  background-color: #10A95B;
+
+  height: 115px;
+}
+
+.status-container {
+  margin: 0 121px 10px 121px;
+  padding: 11px 0;
   text-align: center;
   border-radius: 4px;
 }
@@ -110,7 +115,7 @@ h2 {
   justify-content: center;
   gap: 6px;
   margin: 0 55px;
-  padding-bottom: 145px;
+  padding-bottom: 36px;
 }
 
 .keyboard button {
@@ -130,4 +135,22 @@ button.green {
 
 button.red {
   background-color: #EC5D49;
+}
+
+.new-game-container {
+  display: flex;
+  justify-content: center;
+}
+
+.new-game-btn {
+  background-color: #11B5E5;
+  display: block;
+  text-align: center;
+  width: 228px;
+  height: 40px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid #D7D7D7;
+  font-family: inherit;
+  cursor: pointer;
 }
