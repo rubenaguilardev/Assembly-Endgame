@@ -1,5 +1,7 @@
 import {languages} from './languages.js'
 import {useState} from 'react'
+import { getFarewellText } from './utils.js'
+
 
 export default function App() {
 
@@ -12,7 +14,7 @@ export default function App() {
   const isGameWon = currentWord.split('').every(letter => guessed.includes(letter))
   const isGameLost = wrongWordCount === languages.length - 1 ? true : false
   const isGameOver = isGameWon || isGameLost
-
+  
   const alphabet = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
@@ -66,6 +68,10 @@ export default function App() {
         <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
       </header>
       <section className='status'>
+        {wrongWordCount > 0 && !isGameOver && 
+          <div className='purple'>
+            <h2>{getFarewellText(languages[wrongWordCount -1].name)}</h2>
+          </div>}
         {isGameOver && <div 
           className='status-container' 
           style={{backgroundColor: isGameWon ? '#10A95B' : '#BA2A2A'}}>

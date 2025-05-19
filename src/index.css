@@ -38,15 +38,26 @@ header p {
 }
 
 .status {
-
   height: 115px;
 }
 
-.status-container {
+.status-container,
+.purple {
   margin: 0 121px 10px 121px;
   padding: 11px 0;
   text-align: center;
   border-radius: 4px;
+}
+
+.purple {
+  background-color: #7A5EA7;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #323232;
+  font-size: 1rem;
+  font-style: italic;
 }
 
 h2 {
