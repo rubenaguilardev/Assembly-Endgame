@@ -51,7 +51,7 @@ export default function App() {
       className={isGameLost && !guessed.includes(letter) ? 'redLetter' : 'letter'}>
         {
         !isGameOver && guessed.includes(letter) ? 
-        letter.toUpperCase() : isGameLost ? letter.toUpperCase() : ''
+        letter.toUpperCase() : isGameOver ? letter.toUpperCase() : ''
         }  
     </span>
   )
