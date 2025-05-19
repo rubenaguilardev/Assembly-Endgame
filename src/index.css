@@ -116,7 +116,6 @@ h2 {
   font-weight: 700;
   width: 40px;
   height: 40px;
-  background-color: #323232;
   border-bottom: 2px solid #F9F4DA;
  }
 
@@ -169,4 +168,16 @@ button.red {
   border: 1px solid #D7D7D7;
   font-family: inherit;
   cursor: pointer;
+}
+
+.redLetter {
+  color: #BA2A2A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+  width: 40px;
+  height: 40px;
+  border-bottom: 2px solid #F9F4DA;
 }

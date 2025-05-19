@@ -1,11 +1,12 @@
 import {languages} from './languages.js'
 import {useState} from 'react'
-import { getFarewellText } from './utils.js'
+import { getFarewellText, getRandomWord } from './utils.js'
+import Confetti from 'react-confetti'
 
 
 export default function App() {
 
-  const [currentWord, setCurrentWord] = useState('react')
+  const [currentWord, setCurrentWord] = useState(() => getRandomWord())
 
   const [guessed, setGuessed] = useState([])
 
@@ -47,8 +48,11 @@ export default function App() {
   const letters = currentWord.split('').map((letter, index) => 
     <span 
       key={index} 
-      className='letter'>
-        {guessed.includes(letter) ? letter.toUpperCase() : ''}
+      className={isGameLost && !guessed.includes(letter) ? 'redLetter' : 'letter'}>
+        {
+        !isGameOver && guessed.includes(letter) ? 
+        letter.toUpperCase() : isGameLost ? letter.toUpperCase() : ''
+        }  
     </span>
   )
   
@@ -64,8 +68,14 @@ export default function App() {
       {chip.name}
     </span>)
 
+    function resetGame() {
+      setCurrentWord(getRandomWord())
+      setGuessed([])
+    }
+
   return (
     <main>
+      {isGameWon && <Confetti />}
       <header>
         <h1>Assembly: Endgame</h1>
         <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
@@ -92,7 +102,7 @@ export default function App() {
         {keyboardKeys}
       </section>
       <section className='new-game-container'>
-        {isGameOver && <button className='new-game-btn'>New Game</button>}
+        {isGameOver && <button onClick={resetGame} className='new-game-btn'>New Game</button>}
       </section>
     </main>
   )
