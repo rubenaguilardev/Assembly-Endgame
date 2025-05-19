@@ -14,6 +14,8 @@ export default function App() {
   const isGameWon = currentWord.split('').every(letter => guessed.includes(letter))
   const isGameLost = wrongWordCount === languages.length - 1 ? true : false
   const isGameOver = isGameWon || isGameLost
+  const lastGuessedLetter = guessed[guessed.length - 1]
+  const isLastGuessedIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
   
   const alphabet = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -31,9 +33,10 @@ export default function App() {
     const isGuessed = guessed.includes(letter)
     const isCorrect = isGuessed && currentWord.includes(letter)
     const isWrong = isGuessed & !currentWord.includes(letter)
-
+   
     return (
       <button 
+        disabled={isGameOver}
         key={letter} 
         className={isCorrect ? 'green' : isWrong ? 'red' : null}
         onClick={() => addGuessedLetter(letter)}>{letter.toUpperCase()}
@@ -68,7 +71,7 @@ export default function App() {
         <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
       </header>
       <section className='status'>
-        {wrongWordCount > 0 && !isGameOver && 
+        {isLastGuessedIncorrect && !isGameOver && 
           <div className='purple'>
             <h2>{getFarewellText(languages[wrongWordCount -1].name)}</h2>
           </div>}
